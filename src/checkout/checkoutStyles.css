@@ -58,3 +58,13 @@ h3 {
 .alert-success {
     margin-top: 20px;
 }
+
+.expiry-date {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline
+}
+
+.expiry-input {
+    margin: 0 10px;
+}

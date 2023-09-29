@@ -32,19 +32,27 @@ function Catalog({ products, addToCart, toCart }) {
   const handleSubmit = (event, product) => {
     event.preventDefault();
 
-    const newProduct = {
-      product: product.name,
-      quantity: formData.find(data => data.id === product.id)?.quantity || 0,
-      price: product.price,
-    };
-    newProduct.totalPrice = newProduct.price * newProduct.quantity / 100;
+    const productFormData = formData.find((data) => data.id === product.id);
+    if (productFormData && parseFloat(productFormData.quantity) > 0) {
+      const newProduct = {
+        product: product.name,
+        quantity: parseFloat(productFormData.quantity) || 0,
+        price: product.price,
+      };
+      newProduct.totalPrice = newProduct.price * newProduct.quantity / 100;
 
-    addToCart(newProduct)
+      addToCart(newProduct);
 
-    setFormData((currData) => {
-      const updatedData = currData.filter((data) => data.id !== product.id);
-      return updatedData;
-    });
+      setFormData((currData) => {
+        const updatedData = currData.filter((data) => data.id !== product.id);
+        return updatedData;
+      });
+    } else {
+      // Quantity is not valid, you can show an error message here if needed
+      console.log("Invalid quantity for product:", product.name);
+    }
+
+
 
     // setIsSubmitted(true)
   };
@@ -76,9 +84,12 @@ function Catalog({ products, addToCart, toCart }) {
               type="number" id="quantity"
               placeholder="quantity (kg)"
               name="quantity"
+              required
               onChange={(e) => handleChange(e, product.id)}
               value={formData.find((data) => data.id === product.id)?.quantity || "quantity"} />
-
+            {parseFloat(formData.find((data) => data.id === product.id)?.quantity || "quantity") <= 0 && (
+              <p style={{ color: 'red' }}>Quantity must be greater than 0</p>
+            )}
             <Button type="submit" variant="primary">Add to cart</Button>
           </form>
         </Card>

@@ -45,8 +45,7 @@ function Cart({ cart, removeProduct, toCatalog, toCheckout }) {
     if (appliedVoucher) {
       if (appliedVoucher.product === "total") {
         if (appliedVoucher.calculation === "multiply") {
-          const sum = calculateTotalPrice() * (1 - appliedVoucher.discount)
-          // calculateTotalPrice() * (1 - appliedVoucher.discount);
+          const sum = (calculateTotalPrice() * (1 - appliedVoucher.discount)).toFixed(2)
           setIsVoucher(sum);
         } else if (appliedVoucher.calculation === "substraction") {
           const sum = (calculateTotalPrice() - appliedVoucher.discount).toFixed(2);
