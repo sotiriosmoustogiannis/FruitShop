@@ -1,0 +1,6 @@
+.productCard {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 15px 0;
+}

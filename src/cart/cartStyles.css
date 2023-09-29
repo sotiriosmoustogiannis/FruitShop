@@ -1,0 +1,27 @@
+.cart {
+  border: 2px solid lightgrey;
+  ;
+}
+
+.cartCard {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin: 15px
+}
+
+.cartFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
