@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
+// import Alert from 'react-bootstrap/Alert';
 import './catalogStyles.css'
 
 
-function Catalog({ products, addToCart }) {
+function Catalog({ products, addToCart, toCart }) {
 
   const [formData, setFormData] = useState([])
+  // const [isSubmitted, setIsSubmitted] = useState(false)
 
 
   const handleChange = (evt, id) => {
@@ -44,11 +45,25 @@ function Catalog({ products, addToCart }) {
       const updatedData = currData.filter((data) => data.id !== product.id);
       return updatedData;
     });
+
+    // setIsSubmitted(true)
   };
+
+  // useEffect(() => {
+  //   if (isSubmitted) {
+  //     // Automatically hide the success message after 5 seconds (5000 milliseconds)
+  //     const timer = setTimeout(() => {
+  //       setIsSubmitted(false);
+  //     }, 3000);
+
+  //     // Clean up the timer when the component unmounts or when isSubmitted changes
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [isSubmitted]);
 
 
   return (
-    <div>
+    <div className='catalog'>
       <h3>Poduct Catalog</h3>
       {products.map((product) => (
         <Card className="productCard" key={product.id}>
@@ -68,8 +83,20 @@ function Catalog({ products, addToCart }) {
           </form>
         </Card>
       )
+
       )}
 
+      {products.length > 0 && (
+        <div className='cart-button'>
+          <Button onClick={toCart} size="lg" variant="primary">
+            Go to cart
+          </Button></div>
+      )}
+      {/* {isSubmitted && (
+        <Alert variant="success">
+          Success! Your order has been submitted.
+        </Alert>
+      )} */}
     </div>
   )
 }

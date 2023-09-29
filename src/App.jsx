@@ -12,6 +12,20 @@ const productUrl = 'https://demo0336234.mockable.io/products'
 
 function App() {
 
+  const [component, setComponent] = useState(["catalog"])
+
+  const toCatalog = () => {
+    setComponent("catalog")
+  }
+
+  const toCart = () => {
+    setComponent("cart")
+  }
+
+  const toCheckout = () => {
+    setComponent("checkout")
+  }
+
   //------------------PRODUCT CATALOG STATE-----------------------------
   const [products, setProducts] = useState([])
 
@@ -28,7 +42,12 @@ function App() {
 
   useEffect(() => {
     fetchProducts()
+    setComponent("catalog")
   }, [])
+
+  useEffect(() => {
+
+  }, [component])
 
 
 
@@ -50,16 +69,16 @@ function App() {
 
   return (
     <>
-      <h1>Welcome to Fruit Shop</h1>
-      {products && <>
-        <Catalog products={products} addToCart={addToCart} />
+      <h1>Fruit Shop</h1>
+      {products && component === "catalog" && <>
+        <Catalog products={products} addToCart={addToCart} toCart={toCart} />
       </>}
-      {cart.length !== 0 && <>
-        <Cart cart={cart} removeProduct={removeProduct} />
+      {component === "cart" && <>
+        <Cart cart={cart} removeProduct={removeProduct} toCatalog={toCatalog} toCheckout={toCheckout} />
       </>}
 
-      {cart.length !== 0 && <>
-        <Checkout setCart={setCart} />
+      {cart.length !== 0 && component === "checkout" && <>
+        <Checkout setCart={setCart} toCart={toCart} setComponent={setComponent} />
       </>}
     </>
   )

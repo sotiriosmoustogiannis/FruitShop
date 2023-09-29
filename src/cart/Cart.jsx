@@ -2,6 +2,10 @@ import './cartStyles.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import { X } from 'react-bootstrap-icons';
+import 'bootstrap-icons/font/bootstrap-icons.css'; // Import the Bootstrap Icons CSS
+
+
 
 const vouchers = [
   { voucher: "HAPPYBIRTHDAY", discount: 0.2, product: "total", calculation: "multiply" },
@@ -11,7 +15,7 @@ const vouchers = [
   { voucher: "GREEN", discount: 0.3, product: ["avocados", "pears"], calculation: "multiply" },
 ]
 
-function Cart({ cart, removeProduct }) {
+function Cart({ cart, removeProduct, toCatalog, toCheckout }) {
 
   const [formData, setFormData] = useState({ voucher: "" })
   const [isVoucher, setIsVoucher] = useState(null);
@@ -81,48 +85,65 @@ function Cart({ cart, removeProduct }) {
   }
 
   return (
-    <div className='cart'>
-      <h3>Cart</h3>
-      {cart.map((c) => (
-        <Card className="cartCard" key={c.id}>
-          <div className="cartCard">
-            {c.product} - {c.quantity} - {c.totalPrice}€
+    <div>
+      <div className='cart'>
+        <h3>Cart</h3>
+        {cart.length !== 0 ? cart.map((c) => (
+          <Card className="cartCard" key={c.id}>
+            <div className="cartCard">
+              {c.product} - {c.quantity} - {c.totalPrice}€
+            </div>
+            <Button variant="primary" onClick={() => removeProduct(c.id)}>Remove</Button>
+
+          </Card>
+
+        )) : <h5>Empty Cart</h5>}
+        <div className='cartFooter'>
+          <div className='column'>
+            {cart.length !== 0 ?
+              <form onSubmit={handleSubmit}>
+
+                <label htmlFor="voucher">Voucher: </label>
+                <input
+                  type="text"
+                  placeholder="Voucher"
+                  name="voucher"
+                  id="voucher"
+                  onChange={handleChange}
+                  value={formData.voucher}
+                />
+                <Button type="submit" variant="primary">Apply Voucher</Button>
+              </form> : null}
           </div>
-          <Button variant="primary" onClick={() => removeProduct(c.id)}>Remove</Button>
+          <div className='column'>
+            {isVoucher !== null ?
+              (<>
+                <h6>Total Price: {isVoucher}€</h6>
+                <div className='voucher-enabled'>
+                  <p>Voucher has enabled</p>
+                  <Button onClick={removeVoucher} size="xs" variant='secondary'>
+                    <i className="bi-x"></i> {/* Use the Bootstrap Icons class */}
+                  </Button>
 
-        </Card>
+                </div>
 
-      ))}
-      <div className='cartFooter'>
-        <div className='column'>
-          <form onSubmit={handleSubmit}>
+              </>
 
-            <label htmlFor="voucher">Voucher: </label>
-            <input
-              type="text"
-              placeholder="Voucher"
-              name="voucher"
-              id="voucher"
-              onChange={handleChange}
-              value={formData.voucher}
-            />
-            <Button type="submit" variant="primary">Apply Voucher</Button>
-          </form>
-        </div>
-        <div className='column'>
-          {isVoucher !== null ?
-            (<>
-              <h6>Total Price: {isVoucher}€</h6>
-              <p>Voucher has enabled</p>
-              <Button onClick={removeVoucher} variant='primary'>x</Button>
-            </>
+              )
 
-            )
+              : (<h6>Total Price: {calculateTotalPrice()}€</h6>)}
 
-            : (<h6>Total Price: {calculateTotalPrice()}€</h6>)}
-
+          </div>
         </div>
       </div>
+      <div className='redirect-buttons'>
+        <Button onClick={toCatalog} variant='primary'>Back to Catalog</Button>
+        {cart.length !== 0 ? <Button onClick={toCheckout} variant="primary"> Checkout</Button> : null}
+      </div>
+
+
+
+
     </div>
   )
 }
