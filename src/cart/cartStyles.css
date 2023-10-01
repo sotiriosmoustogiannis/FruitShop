@@ -109,10 +109,6 @@
   cursor: pointer;
 }
 
-.cartFooter button:hover {
-  background-color: #c82333;
-}
-
 .cart-button {
   margin-top: 20px;
 }
@@ -126,5 +122,5 @@
 
 .voucher-enabled {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
