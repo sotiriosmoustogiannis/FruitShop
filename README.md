@@ -1,4 +1,4 @@
-# Online Fruit Product Ordering Application
+# Fruit Shop - Online Fruit Product Ordering Application
 
 ## Project Description
 
