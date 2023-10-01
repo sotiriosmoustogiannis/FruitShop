@@ -1,4 +1,4 @@
-# Fruit Shop - Online Fruit Product Ordering Application
+# Fruit Shop - Online Product Ordering Application
 
 ## Project Description
 
@@ -14,6 +14,33 @@ The application is designed to provide a seamless and user-friendly experience f
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
+
+## Installation
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (Recommended version: 14.x or higher)
+- [npm](https://www.npmjs.com/) (Comes with Node.js)
+
+1. Clone the Repository
+
+ ```bash
+ git clone [https://github.com/yourusername/fruitshop.git](https://github.com/sotiriosmoustogiannis/FruitShop.git)
+
+2. Navigate to the Project Directory
+
+ ```bash
+ cd fruitshop
+
+3. Install Dependencies
+
+ ```bash
+ npm install
+
+2. Start the Development Server
+
+ ```bash
+ npm run serve
 
 ## Features
 
