@@ -8,7 +8,7 @@ The application is designed to provide a seamless and user-friendly experience f
 ## Table of Contents
 
 - [Installation](#installation)
-- [Technologies Used](#technologies)
+- [Technologies](#technologies)
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
