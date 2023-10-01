@@ -26,6 +26,7 @@ The application is designed to provide a seamless and user-friendly experience f
 
  ```bash
  git clone [https://github.com/yourusername/fruitshop.git](https://github.com/sotiriosmoustogiannis/FruitShop.git)
+ ```bash
 
 2. Navigate to the Project Directory
 
