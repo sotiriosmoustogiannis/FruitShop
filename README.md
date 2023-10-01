@@ -22,6 +22,8 @@ The application is designed to provide a seamless and user-friendly experience f
 - [Node.js](https://nodejs.org/) (Recommended version: 14.x or higher)
 - [npm](https://www.npmjs.com/) (Comes with Node.js)
 
+### Getting Started
+
 1. Clone the Repository
 
    ```bash
