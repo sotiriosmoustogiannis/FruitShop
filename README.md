@@ -47,6 +47,9 @@ The application is designed to provide a seamless and user-friendly experience f
    ```bash
    npm run serve
 
+5. Open a web browser and visit the URL shown in your terminal 
+   (usually http://localhost:5173/).
+
 ## Usage
 
 - **Product Catalog**: On the home page, you can browse the product catalog, view product details, add products to your cart, and navigate to the cart and checkout pages.
