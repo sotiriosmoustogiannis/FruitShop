@@ -1,77 +1,39 @@
-import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
+import ProductCard from './ProductCard';
+import Badge from 'react-bootstrap/Badge';
 import './catalogStyles.css'
 
-
-function Catalog({ products, addToCart }) {
-
-  const [formData, setFormData] = useState([])
-
-
-  const handleChange = (evt, id) => {
-    const { name, value } = evt.target;
-    setFormData((currData) => {
-      // Find the index of the item with the given id in the current formData
-      const index = currData.findIndex((data) => data.id === id);
-
-      if (index !== -1) {
-        // If the item with the given id exists in formData, update it
-        return currData.map((data, i) =>
-          i === index ? { ...data, [name]: value } : data
-        );
-      } else {
-        // If the item with the given id doesn't exist, add it
-        return [...currData, { id, [name]: value }];
-      }
-    });
-  };
-
-  const handleSubmit = (event, product) => {
-    event.preventDefault();
-
-    const newProduct = {
-      product: product.name,
-      quantity: formData.find(data => data.id === product.id)?.quantity || 0,
-      price: product.price,
-    };
-    newProduct.totalPrice = newProduct.price * newProduct.quantity / 100;
-
-    addToCart(newProduct)
-
-    setFormData((currData) => {
-      const updatedData = currData.filter((data) => data.id !== product.id);
-      return updatedData;
-    });
-  };
-
+// Catalog component that displays a list of products and a "Go to cart" button
+function Catalog({ products, addToCart, countSelectedProducts, calculateTotalPrice, toCart }) {
 
   return (
-    <div>
+    <div className='catalog'>
       <h3>Poduct Catalog</h3>
       {products.map((product) => (
-        <Card className="productCard" key={product.id}>
-          <Card.Body>{product.name}</Card.Body>
-          <form
-            key={product.id}
-            onSubmit={(e) => handleSubmit(e, product)}>
-
-            <input
-              type="number" id="quantity"
-              placeholder="quantity (kg)"
-              name="quantity"
-              onChange={(e) => handleChange(e, product.id)}
-              value={formData.find((data) => data.id === product.id)?.quantity || "quantity"} />
-
-            <Button type="submit" variant="primary">Add to cart</Button>
-          </form>
-        </Card>
+        // Render ProductCard component for each product with product.product and addToCart function props
+        <ProductCard key={product.id} product={product} addToCart={addToCart} />
       )
       )}
-
+      {products.length > 0 && (
+        // Display "Go to cart" button if there are products in the catalog
+        <div className='catalog-footer'>
+          <div className='cart-button'>
+            <div className="button-container">
+              <Button onClick={toCart} size="lg" variant="primary">
+                Go to cart
+              </Button>
+              <Badge bg="success" className="badge-position badge-lg" style={{ fontSize: '16px' }}>{countSelectedProducts()}</Badge>
+            </div>
+          </div>
+          <div>
+            <h6>Total Price: {calculateTotalPrice()}€</h6>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
 export default Catalog
+
+

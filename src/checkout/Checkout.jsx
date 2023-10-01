@@ -3,34 +3,21 @@ import { useEffect, useState } from 'react'
 import './checkoutStyles.css'
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import CheckoutForm from "./CheckoutForm";
 
-function Checkout({ setCart }) {
+function Checkout({ setCart, setComponent, totalPrice, toCart }) {
 
-  const [formData, setFormData] = useState({ number: "", date: "", cvv: "", name: "" })
+  // State to track whether the order has been submitted
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (evt) => {
-    setFormData(currData => {
-      return {
-        ...currData,
-        [evt.target.name]: evt.target.value
-      }
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("cHECKT OUT")
-    setIsSubmitted(true);
-    setFormData({ number: "", date: "", cvv: "", name: "" })
-    setCart([])
-  }
-
+  // Use useEffect to automatically hide the success message after submission
   useEffect(() => {
     if (isSubmitted) {
-      // Automatically hide the success message after 5 seconds (5000 milliseconds)
+      // Automatically hide the success message after 3 seconds (3000 milliseconds)
       const timer = setTimeout(() => {
         setIsSubmitted(false);
+        setCart([]); //Clear the cart
+        setComponent('catalog'); // Navigate back to the catalog
       }, 3000);
 
       // Clean up the timer when the component unmounts or when isSubmitted changes
@@ -38,58 +25,21 @@ function Checkout({ setCart }) {
     }
   }, [isSubmitted]);
 
+
   return (
     <div className="checkout">
       <h3>Checkout</h3>
-      <form className="checkoutForm" onSubmit={handleSubmit}>
-        <div className="checkoutInput">
-          <label htmlFor="number">Card Number: </label>
-          {/* make input component */}
-          <input
-            type="text"
-            placeholder="Card Number"
-            name="number"
-            id="number"
-            onChange={handleChange}
-            value={formData.number}
-          />
-        </div>
-        <div className="checkoutInput">
-          <label htmlFor="date">Expiration Date: </label>
-          <input
-            type="date"
-            placeholder="Expiration Date"
-            name="date"
-            id="date"
-            onChange={handleChange}
-            value={formData.date}
-          />
-        </div>
-        <div className="checkoutInput">
-          <label htmlFor="cvv">CVV: </label>
-          <input
-            type="text"
-            placeholder="CVV"
-            name="cvv"
-            id="cvv"
-            onChange={handleChange}
-            value={formData.cvv}
-          />
-        </div>
-        <div className="checkoutInput">
-          <label htmlFor="card-name">Card Name: </label>
-          <input
-            type="text"
-            placeholder="Card Name"
-            name="name"
-            id="name"
-            onChange={handleChange}
-            value={formData.name}
-          />
-        </div>
-        <Button type="submit" variant="primary">Checkout</Button>
-      </form>
+      {/* Render the CheckoutForm component */}
+      <CheckoutForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} totalPrice={totalPrice} />
+      {!isSubmitted && (
+        // Render a button to navigate back to the cart
+        <Button className="back-to-cart-button" onClick={toCart} size="lg" variant="primary">
+          Back to cart
+        </Button>
+      )}
+
       {isSubmitted && (
+        // Display a success message after order submission
         <Alert variant="success">
           Success! Your order has been submitted.
         </Alert>
@@ -98,4 +48,6 @@ function Checkout({ setCart }) {
   )
 }
 
-export default Checkout
+export default Checkout;
+
+

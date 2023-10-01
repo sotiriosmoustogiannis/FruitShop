@@ -1,6 +1,19 @@
+/* Updated Checkout CSS */
 .checkout {
     border: 2px solid lightgrey;
     margin: 15px 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Center-align content */
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .checkoutForm {
@@ -10,7 +23,73 @@
 
 .checkoutInput {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     margin: 15px;
+}
+
+.checkoutInput label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.checkoutInput input[type="text"],
+.checkoutInput input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.checkoutInput button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth button transition */
+}
+
+.checkoutInput button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.alert-success {
+    margin-top: 20px;
+}
+
+.expiry-date {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.expiry-input {
+    margin: 0 10px;
+}
+
+/* Styling for the "Back to cart" button */
+.back-to-cart-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #fff;
+    color: #007bff;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.back-to-cart-button:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0056b3;
 }
