@@ -24,23 +24,11 @@ The application is designed to provide a seamless and user-friendly experience f
 
 1. Clone the Repository
 
- ```bash
- git clone [https://github.com/yourusername/fruitshop.git](https://github.com/sotiriosmoustogiannis/FruitShop.git)
-
-2. Navigate to the Project Directory
-
- ```bash
- cd fruitshop
-
-3. Install Dependencies
-
- ```bash
- npm install
-
-2. Start the Development Server
-
- ```bash
- npm run serve
+   ```bash
+   git clone https://github.com/yourusername/fruitshop.git
+   cd fruitshop
+   npm install
+   npm run serve
 
 ## Features
 
