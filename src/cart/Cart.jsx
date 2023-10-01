@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './cartStyles.css'
 
+
 // Cart component displays the shopping cart, allows voucher input, and handles navigation
 function Cart({ cart, removeProduct, calculateTotalPrice, countSelectedProducts, voucherPrice, setVoucherPrice, toCatalog, toCheckout, }) {
 
