@@ -1,91 +1,98 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
-const vouchers = [
-  { voucher: "HAPPYBIRTHDAY", discount: 0.2, product: "total", calculation: "multiply" },
-  { voucher: "SUMMER", discount: 2, product: "total", calculation: "substraction" },
-  { voucher: "ILIKEAPPLES", discount: 0.6, product: "Apple", calculation: "multiply" },
-  { voucher: "ILIKEPEARS", discount: 0.4, product: "Pear", calculation: "multiply" },
-  { voucher: "GREEN", discount: 0.3, product: "Avocado Pear", calculation: "multiply" },
-]
-
+// Define vouchers as an object for easier lookup by voucher code
+const vouchers = {
+  HAPPYBIRTHDAY: { discount: 0.2, target: "total", operation: "multiply" },
+  SUMMER: { discount: 2, target: "total", operation: "subtract" },
+  ILIKEAPPLES: { discount: 0.6, target: "Apple", operation: "multiply" },
+  ILIKEPEARS: { discount: 0.4, target: "Pear", operation: "multiply" },
+  GREEN: { discount: 0.3, target: "Avocado Pear", operation: "multiply" },
+};
 
 function Voucher({ voucherPrice, setVoucherPrice, calculateTotalPrice, cart }) {
-
-  const [formData, setFormData] = useState({ voucher: "" })
+  const [formData, setFormData] = useState({ voucher: "" });
   const [error, setError] = useState(null);
 
-
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     applyVoucher();
-    setFormData({ voucher: "" })
-  }
+    setFormData({ voucher: "" });
+  };
 
   const handleChange = (evt) => {
-    setFormData((currData) => {
-      return {
-        ...currData,
-        [evt.target.name]: evt.target.value
-      }
-    })
+    const { name, value } = evt.target;
+    setFormData((currData) => ({
+      ...currData,
+      [name]: value,
+    }));
     setError(null); // Clear any previous errors when the input changes
+  };
 
-  }
-
+  // Function to apply the voucher code and calculate the discounted price
   const applyVoucher = () => {
+    // initialize to voucherCode the voucher code that user input
     const voucherCode = formData.voucher.toUpperCase();
-    const appliedVoucher = vouchers.find((voucher) => voucher.voucher === voucherCode);
+    // try to find if voucher exists
+    const appliedVoucher = vouchers[voucherCode];
 
+    debugger
+    // if voucher exists
     if (appliedVoucher) {
-      if (appliedVoucher.product === "total") {
-        // Handle vouchers that apply to the total price
-        if (appliedVoucher.calculation === "multiply") {
-          const sum = (calculateTotalPrice() * (1 - appliedVoucher.discount)).toFixed(2);
-          setVoucherPrice(sum);
-        } else if (appliedVoucher.calculation === "substraction") {
-          const sum = (calculateTotalPrice() - appliedVoucher.discount).toFixed(2);
-          setVoucherPrice(sum);
-        }
-      } else {
-        // Handle vouchers that apply to specific products
-        const discount = appliedVoucher.discount;
-        let dis = 0
-        const updatedCart = cart.map((item) => {
-          // Split the voucher's product name and the item's product name by spaces
-          const voucherProductParts = appliedVoucher.product.toLowerCase().split(" ");
-          const itemProductParts = item.product.toLowerCase().split(" ");
+      // Calculate the total discount based on voucher type
+      const totalDiscount = calculateTotalDiscount(appliedVoucher, cart);
+      if (totalDiscount !== null) {
+        const totalPrice = calculateTotalPrice();
+        // Calculate the final discounted price
+        const discountedPrice = calculateDiscountedPrice(appliedVoucher, totalPrice);
+        setVoucherPrice(discountedPrice.toFixed(2)); // Set the voucher price in the state
+        return;
+      }
+    }
 
-          // Check if any part of the voucher's product name matches any part of the item's product name
-          const match = voucherProductParts.some((part) => itemProductParts.includes(part));
-          debugger
+    setError("Invalid voucher code");
+    setVoucherPrice(null); // Clear the voucher price if invalid voucher code
+  };
 
-          if (match) {
-            if (appliedVoucher.calculation === "multiply") {
-              dis += item.totalPrice * discount;
-
-            }
-
-          }
-
-          return item; // Return the item unchanged if it's not affected by the voucher
-        });
-        const sum = (calculateTotalPrice() - dis).toFixed(2);
-        setVoucherPrice(sum);
-        // Update the cart with new prices
-        // You may want to set the updated cart state here
+  // Function to calculate the total discount based on voucher type
+  const calculateTotalDiscount = (voucher, cart) => {
+    if (voucher.target === "total") {
+      const { discount, operation } = voucher;
+      const totalPrice = calculateTotalPrice();
+      if (operation === "multiply") {
+        return totalPrice * (1 - discount);
+      } else if (operation === "subtract") {
+        return totalPrice - discount;
       }
     } else {
-      setError("Invalid voucher code");
-      setVoucherPrice(null);
+      const { discount, operation } = voucher;
+      let totalDiscount = 0;
+      cart.forEach((item) => {
+        const itemProduct = item.product.toLowerCase();
+        const voucherProduct = voucher.target.toLowerCase();
+        if (itemProduct.includes(voucherProduct) && operation === "multiply") {
+          totalDiscount += item.totalPrice * discount;
+        }
+      });
+      return totalDiscount;
     }
+    return null; // Return null if voucher or operation is not valid
+  };
+
+  // Function to calculate the discounted price based on voucher type
+  const calculateDiscountedPrice = (voucher, totalPrice) => {
+    const { discount, operation } = voucher;
+    if (operation === "multiply") {
+      return totalPrice * (1 - discount);
+    } else if (operation === "subtract") {
+      return totalPrice - discount;
+    }
+    return totalPrice; // Return the original price if operation is not valid
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-
         <label htmlFor="voucher">Voucher: </label>
         <input
           type="text"
@@ -95,16 +102,14 @@ function Voucher({ voucherPrice, setVoucherPrice, calculateTotalPrice, cart }) {
           onChange={handleChange}
           value={formData.voucher}
         />
-        {/* if voucher then disable the Apply Voucher button until you remove voucher */}
-        {!voucherPrice ?
-          <Button type="submit" variant="primary">Apply Voucher</Button> :
-          <Button disabled type="submit" variant="primary">Apply Voucher</Button>}
+        {/* Disable the Apply Voucher button if voucherPrice is truthy */}
+        <Button type="submit" variant="primary" disabled={!!voucherPrice}>
+          Apply Voucher
+        </Button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </>
-  )
+  );
 }
 
-export default Voucher
-
-
+export default Voucher;

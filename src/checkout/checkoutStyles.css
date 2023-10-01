@@ -10,12 +10,6 @@
     /* Center-align content */
 }
 
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
 .checkoutForm {
     display: flex;
     flex-direction: column;
@@ -74,7 +68,6 @@ h3 {
     margin: 0 10px;
 }
 
-/* Styling for the "Back to cart" button */
 .back-to-cart-button {
     display: inline-block;
     margin-top: 20px;

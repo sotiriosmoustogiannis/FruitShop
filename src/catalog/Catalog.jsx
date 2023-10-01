@@ -22,7 +22,7 @@ function Catalog({ products, addToCart, countSelectedProducts, calculateTotalPri
               <Button onClick={toCart} size="lg" variant="primary">
                 Go to cart
               </Button>
-              <Badge bg="success" className="badge-position badge-lg" style={{ fontSize: '16px' }}>{countSelectedProducts()}</Badge>
+              <Badge bg="dark" className="badge-position badge-lg" style={{ fontSize: '16px' }}>{countSelectedProducts()}</Badge>
             </div>
           </div>
           <div>

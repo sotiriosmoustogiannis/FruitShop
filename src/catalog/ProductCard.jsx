@@ -56,7 +56,7 @@ function ProductCard({ product, addToCart }) {
   return (
     <>
       <Card className="productCard">
-        <Card.Body>{product.name}</Card.Body>
+        <Card.Body><h5>{product.name} - {product.price / 100}€/kg</h5></Card.Body>
         <form key={product.id} onSubmit={(e) => handleSubmit(e, product)}>
           <input
             type="number" id="quantity"

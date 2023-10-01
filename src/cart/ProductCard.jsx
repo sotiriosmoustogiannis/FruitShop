@@ -9,10 +9,13 @@ function ProductCard({ cart, removeProduct }) {
       <Card className="cartCard">
         <div className="cartCard">
           {/* Display product name, quantity, and total price */}
-          {cart.product} - {cart.quantity} - {cart.totalPrice}€
+          <div><h6>Name: {cart.product}</h6></div>
+          <div><h6>Total Quantity: {cart.quantity} </h6></div>
+          <div><h6>Total Price: {cart.totalPrice}€</h6></div>
+          {/* Button to remove the product from the cart */}
+          <Button variant="danger" onClick={() => removeProduct(cart.id)}>Remove</Button>
         </div>
-        {/* Button to remove the product from the cart */}
-        <Button variant="primary" onClick={() => removeProduct(cart.id)}>Remove</Button>
+
       </Card>
     </>
   )
