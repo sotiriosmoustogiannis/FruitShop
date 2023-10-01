@@ -30,7 +30,7 @@ The application is designed to provide a seamless and user-friendly experience f
 1. Clone the Repository
 
    ```bash
-   git clone [https://github.com/sotiriosmoustogiannis/fruitshop.git](https://github.com/sotiriosmoustogiannis/FruitShop.git)
+   git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 2. Navigate to the Project Directory
 
