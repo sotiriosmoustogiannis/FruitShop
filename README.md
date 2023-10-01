@@ -26,8 +26,20 @@ The application is designed to provide a seamless and user-friendly experience f
 
    ```bash
    git clone https://github.com/yourusername/fruitshop.git
+
+2. Navigate to the Project Directory
+
+   ```bash
    cd fruitshop
+
+3. Install Dependencies
+
+   ```bash
    npm install
+
+4. Start the Development Server
+
+   ```bash
    npm run serve
 
 ## Features
