@@ -44,6 +44,15 @@ The application is designed to provide a seamless and user-friendly experience f
    ```bash
    npm run serve
 
+## Usage
+
+- **Product Catalog**: On the home page, you can browse the product catalog, view product details, add products to your cart, and navigate to the cart and checkout pages.
+
+- **Cart**: In the cart, you can review your selected products. You have the option to apply voucher codes for discounts on your order. Once you've reviewed your cart, you can proceed to checkout.
+
+- **Checkout**: In the checkout, you can provide payment information to complete your order securely. Please ensure you enter accurate and valid payment details.
+
+
 ## Features
 
 ### Catalog
