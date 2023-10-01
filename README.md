@@ -92,7 +92,6 @@ Contributions to this project are welcome!
 
 ## Technologies Used
 
-- Frontend: [React](https://reactjs.org/)
+- Frontend: [React](https://reactjs.org/), [Vite](https://vitejs.dev/guide), [React Bootstrap](https://react-bootstrap.netlify.app/)
 - External API: [Product Catalog API](https://demo0336234.mockable.io/products)
-- Design tools: [React Bootstrap](https://react-bootstrap.netlify.app/)
 
