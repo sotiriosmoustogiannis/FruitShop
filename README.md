@@ -50,7 +50,7 @@ The application is designed to provide a seamless and user-friendly experience f
 
 ## Contributing
 
-Contributions to this project are welcome! If you'd like to contribute, please follow our [contribution guidelines](CONTRIBUTING.md).
+Contributions to this project are welcome!
 
 ## Technologies Used
 
