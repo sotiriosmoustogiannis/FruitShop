@@ -52,9 +52,9 @@ The application is designed to provide a seamless and user-friendly experience f
 
 ## Usage
 
-- **Product Catalog**: On the home page, you can browse the product catalog, view product details, add products to your cart, and navigate to the cart and checkout pages.
+- **Product Catalog**: On the home page, you can browse the product catalog, view product details, add products to your cart, and navigate to the cart page.
 
-- **Cart**: In the cart, you can review your selected products. You have the option to apply voucher codes for discounts on your order. Once you've reviewed your cart, you can proceed to checkout.
+- **Cart**: In the cart, you can review your selected products. You have the option to apply voucher codes for discounts on your order. Once you've reviewed your cart, you can proceed to checkout or return to the catalog.
 
 - **Checkout**: In the checkout, you can provide payment information to complete your order securely. Please ensure you enter accurate and valid payment details.
 
@@ -64,7 +64,7 @@ The application is designed to provide a seamless and user-friendly experience f
 ### Catalog
 
 - Customers can browse a catalog of products available for purchase.
-- Each product displays its name, price (in cents), and quantity (in kilograms).
+- Each product displays its name and price (in euros).
 - Customers can add products to their cart, specifying the desired quantity.
 - The application supports adding multiple instances of the same product without summing their quantities.
 
