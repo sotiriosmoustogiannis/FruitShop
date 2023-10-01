@@ -8,12 +8,10 @@ The application is designed to provide a seamless and user-friendly experience f
 ## Table of Contents
 
 - [Installation](#installation)
+- [Technologies Used](#technologies)
 - [Usage](#usage)
-- [Configuration](#configuration)
 - [Features](#features)
 - [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
 
 ## Installation
 
@@ -21,6 +19,11 @@ The application is designed to provide a seamless and user-friendly experience f
 
 - [Node.js](https://nodejs.org/) (Recommended version: 14.x or higher)
 - [npm](https://www.npmjs.com/) (Comes with Node.js)
+
+## Technologies Used
+
+- Frontend: [React](https://reactjs.org/), [Vite](https://vitejs.dev/guide), [React Bootstrap](https://react-bootstrap.netlify.app/)
+- External API: [Product Catalog API](https://demo0336234.mockable.io/products)
 
 ### Getting Started
 
@@ -89,9 +92,3 @@ The application is designed to provide a seamless and user-friendly experience f
 ## Contributing
 
 Contributions to this project are welcome!
-
-## Technologies Used
-
-- Frontend: [React](https://reactjs.org/), [Vite](https://vitejs.dev/guide), [React Bootstrap](https://react-bootstrap.netlify.app/)
-- External API: [Product Catalog API](https://demo0336234.mockable.io/products)
-
