@@ -20,7 +20,7 @@ The application is designed to provide a seamless and user-friendly experience f
 - [Node.js](https://nodejs.org/) (Recommended version: 14.x or higher)
 - [npm](https://www.npmjs.com/) (Comes with Node.js)
 
-## Technologies Used
+## Technologies
 
 - Frontend: [React](https://reactjs.org/), [Vite](https://vitejs.dev/guide), [React Bootstrap](https://react-bootstrap.netlify.app/)
 - External API: [Product Catalog API](https://demo0336234.mockable.io/products)
