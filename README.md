@@ -48,3 +48,9 @@ The application is designed to provide a seamless and user-friendly experience f
 - Validation ensures that customers provide accurate and complete payment information.
 - After clicking the "Pay" button, a generic success message is displayed.
 
+## Technologies Used
+
+- Frontend: [React](https://reactjs.org/)
+- External API: [Product Catalog API](https://demo0336234.mockable.io/products)
+- Design tools: [React Bootstrap](https://react-bootstrap.netlify.app/)
+
