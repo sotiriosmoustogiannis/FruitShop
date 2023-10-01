@@ -48,6 +48,10 @@ The application is designed to provide a seamless and user-friendly experience f
 - Validation ensures that customers provide accurate and complete payment information.
 - After clicking the "Pay" button, a generic success message is displayed.
 
+## Contributing
+
+Contributions to this project are welcome! If you'd like to contribute, please follow our [contribution guidelines](CONTRIBUTING.md).
+
 ## Technologies Used
 
 - Frontend: [React](https://reactjs.org/)
