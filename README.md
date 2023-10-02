@@ -26,11 +26,9 @@ The application is designed to provide a seamless and user-friendly experience f
 
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
-   
 
-    or
+    or if you provide ssh key
 
-  
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 
