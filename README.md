@@ -30,7 +30,7 @@ The application is designed to provide a seamless and user-friendly experience f
 
     or
 
-   ```bash
+  
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 
