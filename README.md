@@ -29,9 +29,8 @@ The application is designed to provide a seamless and user-friendly experience f
 git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 
-    or if you provide ssh key
-
-   git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
+# Clone the repository using SSH (if you have an SSH key set up)
+git clone git@github.com:sotiriosmoustogiannis/fruitshop.git
 
 
 2. Navigate to the Project Directory
