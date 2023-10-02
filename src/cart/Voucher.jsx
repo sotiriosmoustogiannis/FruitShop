@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
@@ -44,7 +45,7 @@ function Voucher({ voucherPrice, setVoucherPrice, calculateTotalPrice, cart }) {
       if (totalDiscount !== null) {
         const totalPrice = calculateTotalPrice();
         // Calculate the final discounted price
-        const discountedPrice = calculateDiscountedPrice(appliedVoucher, totalPrice);
+        const discountedPrice = calculateDiscountedPrice(appliedVoucher, totalPrice, totalDiscount);
         setVoucherPrice(discountedPrice.toFixed(2)); // Set the voucher price in the state
         return;
       }
@@ -58,19 +59,27 @@ function Voucher({ voucherPrice, setVoucherPrice, calculateTotalPrice, cart }) {
   const calculateTotalDiscount = (voucher, cart) => {
     if (voucher.target === "total") {
       const { discount, operation } = voucher;
+      let totalDiscount = 0;
       const totalPrice = calculateTotalPrice();
       if (operation === "multiply") {
-        return totalPrice * (1 - discount);
+        totalDiscount = totalPrice * discount
+        return totalDiscount
       } else if (operation === "subtract") {
-        return totalPrice - discount;
+        totalDiscount = discount
+        return totalDiscount
       }
     } else {
-      const { discount, operation } = voucher;
+      const { discount, operation, target } = voucher;
       let totalDiscount = 0;
       cart.forEach((item) => {
-        const itemProduct = item.product.toLowerCase();
+        //split the target of voucher (some vouchers targets 2 or more products)
+        const voucherProductParts = target.toLowerCase().split(" ");
+        const itemProductParts = item.product.toLowerCase().split(" ");
+
+        const match = voucherProductParts.some((part) => itemProductParts.includes(part));
+
         const voucherProduct = voucher.target.toLowerCase();
-        if (itemProduct.includes(voucherProduct) && operation === "multiply") {
+        if (match && operation === "multiply") {
           totalDiscount += item.totalPrice * discount;
         }
       });
@@ -80,10 +89,10 @@ function Voucher({ voucherPrice, setVoucherPrice, calculateTotalPrice, cart }) {
   };
 
   // Function to calculate the discounted price based on voucher type
-  const calculateDiscountedPrice = (voucher, totalPrice) => {
+  const calculateDiscountedPrice = (voucher, totalPrice, totalDiscount) => {
     const { discount, operation } = voucher;
     if (operation === "multiply") {
-      return totalPrice * (1 - discount);
+      return totalPrice - totalDiscount;
     } else if (operation === "subtract") {
       return totalPrice - discount;
     }
