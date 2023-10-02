@@ -28,7 +28,7 @@ The application is designed to provide a seamless and user-friendly experience f
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
    
 
-   or
+  or
 
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
