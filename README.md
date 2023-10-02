@@ -34,7 +34,6 @@ or
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 
-
 2. Navigate to the Project Directory
 
    ```bash
