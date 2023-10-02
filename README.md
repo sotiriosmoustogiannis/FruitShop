@@ -32,7 +32,7 @@ or
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
-2. Navigate to the Project Directory
+1. Clone the repository using HTTPS:
 
    ```bash
    cd fruitshop
