@@ -103,11 +103,24 @@ function App() {
       <h1>Fruit Shop</h1>
       {products && component === "catalog" && <>
         {/* Render the Catalog component with product data and navigation functions */}
-        <Catalog products={products} addToCart={addToCart} countSelectedProducts={countSelectedProducts} calculateTotalPrice={calculateTotalPrice} toCart={toCart} />
+        <Catalog
+          products={products}
+          addToCart={addToCart}
+          countSelectedProducts={countSelectedProducts}
+          calculateTotalPrice={calculateTotalPrice}
+          toCart={toCart} />
       </>}
       {component === "cart" && <>
         {/* Render the Cart component with cart data and navigation functions */}
-        <Cart cart={cart} removeProduct={removeProduct} calculateTotalPrice={calculateTotalPrice} countSelectedProducts={countSelectedProducts} voucherPrice={voucherPrice} setVoucherPrice={setVoucherPrice} toCatalog={toCatalog} toCheckout={toCheckout} />
+        <Cart
+          cart={cart}
+          removeProduct={removeProduct}
+          calculateTotalPrice={calculateTotalPrice}
+          countSelectedProducts={countSelectedProducts}
+          voucherPrice={voucherPrice}
+          setVoucherPrice={setVoucherPrice}
+          toCatalog={toCatalog}
+          toCheckout={toCheckout} />
       </>}
       {cart.length !== 0 && component === "checkout" && <>
         {/* Render the Checkout component with cart data and navigation functions */}

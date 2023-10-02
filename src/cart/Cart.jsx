@@ -24,7 +24,11 @@ function Cart({ cart, removeProduct, calculateTotalPrice, countSelectedProducts,
           <div className='column'>
             {/* Render the Voucher component if the cart is not empty */}
             {cart.length !== 0 ?
-              <Voucher voucherPrice={voucherPrice} setVoucherPrice={setVoucherPrice} calculateTotalPrice={calculateTotalPrice} cart={cart} />
+              <Voucher
+                voucherPrice={voucherPrice}
+                setVoucherPrice={setVoucherPrice}
+                calculateTotalPrice={calculateTotalPrice}
+                cart={cart} />
               : null}
           </div>
           <div className='column'>
