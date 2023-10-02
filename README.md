@@ -27,7 +27,7 @@ The application is designed to provide a seamless and user-friendly experience f
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
-1. or Clone the repository using SSH:
+- or Clone the repository using SSH:
 
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
