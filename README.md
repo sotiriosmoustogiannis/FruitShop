@@ -22,16 +22,13 @@ The application is designed to provide a seamless and user-friendly experience f
 
 ### Getting Started
 
-1. Clone the Repository
+1. Clone the repository using HTTPS:
 
    ```bash
    git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
-
 or
-   
-   ```bash
-   git clone git@github.com:sotiriosmoustogiannis/FruitShop.git
-   
+
+git clone git@github.com:sotiriosmoustogiannis/FruitShop.git
 
 2. Navigate to the Project Directory
 
