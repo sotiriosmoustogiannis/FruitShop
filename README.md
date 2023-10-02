@@ -24,12 +24,14 @@ The application is designed to provide a seamless and user-friendly experience f
 
 1. Clone the repository using HTTPS:
 
-   ```bash
-# Clone the repository using HTTPS
+   
+Clone the repository using HTTPS
+```bash
 git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
 
 
-# Clone the repository using SSH (if you have an SSH key set up)
+Clone the repository using SSH (if you have an SSH key set up)
+```bash
 git clone git@github.com:sotiriosmoustogiannis/fruitshop.git
 
 
