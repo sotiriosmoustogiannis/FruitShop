@@ -25,7 +25,9 @@ The application is designed to provide a seamless and user-friendly experience f
 1. Clone the repository using HTTPS:
 
    ```bash
-   git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
+# Clone the repository using HTTPS
+git clone https://github.com/sotiriosmoustogiannis/fruitshop.git
+
 
     or if you provide ssh key
 
